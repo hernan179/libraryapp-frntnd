@@ -1,0 +1,9 @@
+import { Libros } from "./libros";
+
+export class Categorias {
+    id: number;
+    nombre: number;
+    descripcion: string;
+    estado : boolean;
+    libros: Libros[];
+}

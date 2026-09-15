@@ -1,0 +1,75 @@
+
+<p>libros-edit works!</p>
+<form [formRoot]="librosForm.$form" (submit)="operate()" class="example-container">
+<div [hidden]="true">
+        <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input type="number" matInput placeholder="ID" [formField]="librosForm.$form.idLibro"/>
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+  <mat-label>TITULO</mat-label>
+        <input type="text" matInput placeholder="Titulo" [formField]="librosForm.$form.titulo"/>
+        @if (librosForm.$form.titulo().errors().some(error => error.kind === 'required') && librosForm.$form.titulo().touched()) {
+            <small class="invalid">Is required</small>
+        }
+        @if (librosForm.$form.titulo().errors().some(error => error.kind === 'minLength') && librosForm.$form.titulo().touched()) {
+            <small class="invalid">minLength is 3</small>
+        }
+  </mat-form-field>
+  <mat-form-field>
+  <mat-label>ISBN(International Standard Book Number)</mat-label>
+        <input type="text" matInput placeholder="ISBN" [formField]="librosForm.$form.isbn"/>
+        @if (librosForm.$form.isbn().errors().some(error => error.kind === 'required') && librosForm.$form.isbn().touched()) {
+            <small class="invalid">Is required</small>
+        }
+        @if (librosForm.$form.isbn().errors().some(error => error.kind === 'minLength') && librosForm.$form.isbn().touched()) {
+            <small class="invalid">minLength is 13</small>
+        }
+  </mat-form-field>
+
+  <mat-form-field>
+  <mat-label>AUTOR</mat-label>
+        <input type="text" matInput placeholder="Autor" [formField]="librosForm.$form.autor"/>
+        @if (librosForm.$form.autor().errors().some(error => error.kind === 'required') && librosForm.$form.autor().touched()) {
+            <small class="invalid">Is required</small>
+        }
+        @if (librosForm.$form.autor().errors().some(error => error.kind === 'minLength') && librosForm.$form.autor().touched()) {
+            <small class="invalid">minLength is 3</small>
+        }
+  </mat-form-field>
+
+<mat-form-field>
+  <mat-label>CATEGORIA</mat-label>
+ <mat-select [formControl]="foodControl">
+ @for (label of labels; track label) {
+    <mat-option [value]="label.id">{{label.nombre}}</mat-option>
+  }
+  </mat-select>
+
+  @if (foodControl.hasError('required')) {
+    <small class="invalid">Category is required...</small>
+  }
+</mat-form-field>
+
+  <mat-label>DISPONIBLE</mat-label>
+     <mat-checkbox [formField]="librosForm.$form.disponible">DISPONIBLE</mat-checkbox>
+      @if (librosForm.$form.disponible().errors().some(error => error.kind === 'required') && librosForm.$form.disponible().touched()) {
+            <small class="invalid">Is required</small>
+        }
+        @if (librosForm.$form.disponible().errors().some(error => error.kind === 'minLength') && librosForm.$form.disponible().touched()) {
+            <small class="invalid">minLength is 3</small>
+        }
+<div class="example-button-row">
+   <button mat-flat-button type="submit" [disabled]="librosForm.isInvalid()">
+        <span>OK</span>
+        <mat-icon>done</mat-icon>
+    </button>
+
+    <button mat-flat-button type="button" class="cancel-button" routerLink="/pages/libros">
+        <span>Cancel</span>
+        <mat-icon>cancel</mat-icon>
+    </button>
+</div>
+
+</form>
