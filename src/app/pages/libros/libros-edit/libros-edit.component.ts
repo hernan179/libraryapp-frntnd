@@ -93,10 +93,12 @@ export class LibrosEditComponent {
      effect( () => {
       if(this.librosEditStore.librosResource.hasValue()){
          this.librosForm.patch(this.librosEditStore.librosResource.value());
+
+     console.log('=======new========='+this.$id());
+
       }
 
-     console.log('================');
-     //console.log(this.librosForm.$form.categoria);
+
 
      });
 
