@@ -39,20 +39,41 @@
                 <mat-icon>search</mat-icon>
                 <span>Search</span>
             </button>
-            <mat-divider></mat-divider>
 
+            <mat-divider></mat-divider>
             <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
                 routerLink="/pages/libros" >
-                <mat-icon>view_carousel</mat-icon>
+                <mat-icon>bookmark_border</mat-icon>
                 <span>Libros</span>
             </button>
-             <mat-divider></mat-divider>
 
+           <mat-divider></mat-divider>
              <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
              routerLink="/pages/categorias">
                 <mat-icon>category</mat-icon>
                 <span>Categoria</span>
              </button>
+
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/libros" >
+                <mat-icon>accessibility</mat-icon>
+                <span>Cliente</span>
+            </button>
+
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/libros" >
+                <mat-icon>calendar_today</mat-icon>
+                <span>Reserva</span>
+            </button>
+
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/libros" >
+                <mat-icon>horizontal_split</mat-icon>
+                <span>Dtlls Reserva</span>
+            </button>
 
 
         </mat-sidenav>
