@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>{{ $isEdit() ? 'Edit Categoria' : 'New Categoria' }}</h2>
+
+<form [formRoot]="categoriasForm.$form" (submit)="operate()">
+    <mat-dialog-content class="example-container">
+        <div [hidden]="true">
+            <mat-form-field>
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="ID" [formField]="categoriasForm.$form.id"/>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field>
+            <mat-label>NOMBRE</mat-label>
+            <input matInput placeholder="Name" [formField]="categoriasForm.$form.nombre"/>
+            @if (categoriasForm.$form.nombre().errors().some(error => error.kind === 'required') && categoriasForm.$form.nombre().touched()) {
+                <small class="invalid">Is required</small>
+            }
+            @if (categoriasForm.$form.nombre().errors().some(error => error.kind === 'minLength') && categoriasForm.$form.nombre().touched()) {
+                <small class="invalid">minLength is 3</small>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>DESCRIPTION</mat-label>
+            <input matInput placeholder="Description" [formField]="categoriasForm.$form.descripcion"/>
+            @if (categoriasForm.$form.descripcion().errors().some(error => error.kind === 'required') && categoriasForm.$form.descripcion().touched()) {
+                <small class="invalid">Is required</small>
+            }
+        </mat-form-field>
+    </mat-dialog-content>
+
+
+     <mat-checkbox [formField]="categoriasForm.$form.estado">DISPONIBLE</mat-checkbox>
+      @if (categoriasForm.$form.estado().errors().some(error => error.kind === 'required') && categoriasForm.$form.estado().touched()) {
+            <small class="invalid">Is required</small>
+        }
+        @if (categoriasForm.$form.estado().errors().some(error => error.kind === 'minLength') && categoriasForm.$form.estado().touched()) {
+            <small class="invalid">minLength is 3</small>
+        }
+
+
+
+    <mat-dialog-actions align="end">
+        <button mat-flat-button type="submit" [disabled]="categoriasForm.isInvalid()">
+            <span>OK</span>
+            <mat-icon>done</mat-icon>
+        </button>
+
+        <button mat-flat-button type="button" class="cancel-button" (click)="cancel()">
+            <span>Cancel</span>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-dialog-actions>
+
+</form>

@@ -95,11 +95,7 @@ export class LibrosEditComponent {
          this.librosForm.patch(this.librosEditStore.librosResource.value());
 
      console.log('=======new========='+this.$id());
-
       }
-
-
-
      });
 
   }

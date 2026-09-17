@@ -40,7 +40,7 @@
   </mat-form-field>
 
 <mat-form-field>
-  <mat-label>CATEGORIA</mat-label>
+  <mat-label>CATEGORIA (Current: )</mat-label>
  <mat-select [formControl]="foodControl">
  @for (label of labels; track label) {
     <mat-option [value]="label.id">{{label.nombre}}</mat-option>
@@ -52,7 +52,6 @@
   }
 </mat-form-field>
 
-  <mat-label>DISPONIBLE</mat-label>
      <mat-checkbox [formField]="librosForm.$form.disponible">DISPONIBLE</mat-checkbox>
       @if (librosForm.$form.disponible().errors().some(error => error.kind === 'required') && librosForm.$form.disponible().touched()) {
             <small class="invalid">Is required</small>
@@ -60,6 +59,7 @@
         @if (librosForm.$form.disponible().errors().some(error => error.kind === 'minLength') && librosForm.$form.disponible().touched()) {
             <small class="invalid">minLength is 3</small>
         }
+
 <div class="example-button-row">
    <button mat-flat-button type="submit" [disabled]="librosForm.isInvalid()">
         <span>OK</span>
