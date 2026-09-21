@@ -8,7 +8,7 @@ You are charges for construction of frontend in this example
 ## Operation to applied on context
 This is a Spring Boot backend on package `app.pages`. For these resources you can use `libros` as canonical pattern:
 
-- `domain/Libros.java`
+- `domain/libros.ts`
 - `services/libros.services.ts`
 - `page/libros.component.ts`
 - `page/libros.component.css`
