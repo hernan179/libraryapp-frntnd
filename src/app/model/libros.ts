@@ -1,4 +1,5 @@
 import { Categorias } from "./categorias";
+import { Reserva } from "./reserva";
 
 export class Libros{
     idLibro: number;
@@ -7,4 +8,5 @@ export class Libros{
     isbn : string;
     disponible: boolean;
     categoria: Categorias;
+    reserva: Reserva[];
 }

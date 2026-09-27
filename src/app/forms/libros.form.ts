@@ -10,6 +10,7 @@ import { Categorias } from "../model/categorias";
     autor: '',
     isbn : '',
     disponible: false,
+    reserva: null,
     categoria: new Categorias
   });
 

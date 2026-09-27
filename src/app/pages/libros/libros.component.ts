@@ -17,7 +17,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   imports: [
     MatTableModule,
-    RouterLink,
     MatButtonModule,
     MatIconModule,
     RouterOutlet,

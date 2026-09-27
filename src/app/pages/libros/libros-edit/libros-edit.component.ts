@@ -72,11 +72,11 @@ export class LibrosEditComponent {
 
   protected $isEdit = computed(() => this.$id() !== null);
 
-  protected readonly dataSourceCategorias = new MatTableDataSource<Categorias>();
+  //protected readonly dataSourceCategorias = new MatTableDataSource<Categorias>();
 
 
    labels: Categorias[];
-   foodControl = new FormControl('',Validators.required);
+   foodControlx = new FormControl('',Validators.required);
 
 
   constructor(){
@@ -93,8 +93,6 @@ export class LibrosEditComponent {
      effect( () => {
       if(this.librosEditStore.librosResource.hasValue()){
          this.librosForm.patch(this.librosEditStore.librosResource.value());
-
-     console.log('=======new========='+this.$id());
       }
      });
 
@@ -108,19 +106,15 @@ export class LibrosEditComponent {
     const id = this.$id();
     const libros: Libros = this.librosForm.value();
 
-     console.log("updating....00 "+this.foodControl.value);
+    //hsa console.log("updating....00 "+this.foodControl.value);
 
   libros.categoria = new Categorias();
-  libros.categoria.id = Number(this.foodControl.value);
+  libros.categoria.id = Number(this.foodControlx.value);
 
   if(libros.categoria.id> 0){
- console.log("todo esta correcto.........");
   }else{
-     console.log(" errorrrr   correcto.........");
     return;
   }
-
-    console.log("updating....00 "+ libros.categoria.id);
 
     const operation$ = isEdit ? this.librosService.update(id, libros) : this.librosService.save(libros);
 
@@ -131,8 +125,7 @@ export class LibrosEditComponent {
       this.notificationService.notify(isEdit ? 'UPDATED' : 'CREATED');
 
       this.router.navigate(['/pages/libros']);
-      console.log("updating....07 ");
-
+      console.log("updating....07 ")
     });
   }
 

@@ -20,4 +20,7 @@ readonly categoriaResource = httpResource<Categorias>( () => this.$categoriasreq
 setId(id: number | null){
   this.$id.set(id);
 }
+   reload(){
+        this.categoriaResource.reload();
+    }
 }

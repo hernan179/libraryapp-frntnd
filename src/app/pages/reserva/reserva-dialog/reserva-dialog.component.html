@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>{{ $isEdit() ? 'Edit Reservation' : 'Nueva Reservacion' }}</h2>
+
+<form [formRoot]="reservaForm.$form" (submit)="operate()" class="example-container">
+  <mat-dialog-content class="example-container">
+    <mat-form-field>
+      <mat-label>Fecha de Reserva</mat-label>
+      <input matInput type="datetime-local" [value]="fechaInput()" (input)="onFechaInput($event)">
+      @if (reservaForm.$form.fechaReserva().errors().some(error => error.kind === 'required')) {
+        <small class="invalid">Reservation date is required</small>
+      }
+</mat-form-field>
+
+
+<mat-form-field>
+  <mat-label>Clientes</mat-label>
+  <mat-select [formControl]="clienteidform">
+     @for(cli of clientes; track cli){
+     <mat-option [value]="cli.idCliente">{{cli.nombres+'  '+cli.apellidos}}</mat-option>
+    }
+    @if(clienteidform.hasError('required')) {
+    <small class="invalid">Cliente es requerido...</small>
+     }
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Libros</mat-label>
+  <mat-select [formControl]="libroidform">
+   @for(li of libros; track li){
+   <mat-option [value]="li.idLibro">{{li.titulo+' Autor:' +li.autor}}</mat-option>
+  }
+   @if(libroidform.hasError('required')) {
+    <small class="invalid">Libro es requerido...</small>
+     }
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Estado</mat-label>
+  <mat-select [formControl]="estadoidform">
+    @for(es of estados; track es){
+    <mat-option [value]="es.idEstado">{{es.nombre}}</mat-option>
+    }
+     @if(estadoidform.hasError('required')) {
+    <small class="invalid">Estado es requerido...</small>
+     }
+  </mat-select>
+</mat-form-field>
+
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-flat-button type="submit" [disabled]="reservaForm.isInvalid()">
+      <mat-icon>done</mat-icon><span>OK</span>
+    </button>
+    <button mat-flat-button type="button" class="cancel-button" (click)="cancel()">
+      <mat-icon>cancel</mat-icon><span>Cancel</span>
+    </button>
+  </mat-dialog-actions>
+</form>

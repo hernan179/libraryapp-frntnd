@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{ $isEdit() ? 'Edit Client' : 'Nuevo cliente' }}</h2>
+
+<form [formRoot]="clientesForm.$form" (submit)="operate()">
+  <mat-dialog-content class="example-container">
+    <mat-form-field>
+      <mat-label>Names</mat-label>
+      <input matInput [formField]="clientesForm.$form.nombres">
+      @if (clientesForm.$form.nombres().errors().some(error => error.kind === 'required') && clientesForm.$form.nombres().touched()) {
+        <small class="invalid">Names are required</small>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Surnames</mat-label>
+      <input matInput [formField]="clientesForm.$form.apellidos">
+      @if (clientesForm.$form.apellidos().errors().some(error => error.kind === 'required') && clientesForm.$form.apellidos().touched()) {
+        <small class="invalid">Surnames are required</small>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Document</mat-label>
+      <input matInput [formField]="clientesForm.$form.cedula">
+      @if (clientesForm.$form.cedula().errors().some(error => error.kind === 'required') && clientesForm.$form.cedula().touched()) {
+        <small class="invalid">Document is required</small>
+      }
+    </mat-form-field>
+
+    <mat-checkbox [formField]="clientesForm.$form.email">Email enabled</mat-checkbox>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-flat-button type="submit" [disabled]="clientesForm.isInvalid()">
+      <mat-icon>done</mat-icon><span>OK</span>
+    </button>
+    <button mat-flat-button type="button" class="cancel-button" (click)="cancel()">
+      <mat-icon>cancel</mat-icon><span>Cancel</span>
+    </button>
+  </mat-dialog-actions>
+</form>

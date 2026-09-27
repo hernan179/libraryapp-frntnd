@@ -40,14 +40,14 @@
   </mat-form-field>
 
 <mat-form-field>
-  <mat-label>CATEGORIA (Current: )</mat-label>
- <mat-select [formControl]="foodControl">
+  <mat-label>CATEGORIA (+)</mat-label>
+ <mat-select [formControl]="foodControlx">
  @for (label of labels; track label) {
     <mat-option [value]="label.id">{{label.nombre}}</mat-option>
   }
   </mat-select>
 
-  @if (foodControl.hasError('required')) {
+  @if(foodControlx.hasError('required')) {
     <small class="invalid">Category is required...</small>
   }
 </mat-form-field>

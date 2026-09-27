@@ -58,3 +58,13 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 # libraryapp-frntnd
+
+
+
+## Added some instruction for recording...
+
+root: C:\Users\ASUS\Desktop\mitocode\JFS AI Angular\hsa\libraryapp-frntnd
+
+1. I created .agents/subagents/write-code.cm and .agents/feature/cliente-crud.md, so next one I run de commando 
+   "use writer-code.md subagent define in subagent directory to make cliente-crud.md feature" 
+   the path to execute command is: C:\Users\ASUS\Desktop\mitocode\JFS AI Angular\hsa\libraryapp-frntnd

@@ -15,7 +15,6 @@ export class LibrosStore{
     readonly $error = this.librosResource.error;
 
     reload(){
-      console.log("reloading... in LibrosStore...")
         this.librosResource.reload();
     }
 }

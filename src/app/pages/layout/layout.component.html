@@ -56,23 +56,17 @@
 
             <mat-divider></mat-divider>
             <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
-                routerLink="/pages/libros" >
+                routerLink="/pages/clientes" >
                 <mat-icon>accessibility</mat-icon>
                 <span>Cliente</span>
             </button>
 
-            <mat-divider></mat-divider>
-            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
-                routerLink="/pages/libros" >
-                <mat-icon>calendar_today</mat-icon>
-                <span>Reserva</span>
-            </button>
 
             <mat-divider></mat-divider>
             <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
-                routerLink="/pages/libros" >
-                <mat-icon>horizontal_split</mat-icon>
-                <span>Dtlls Reserva</span>
+                routerLink="/pages/reserva" >
+                <mat-icon>event_note</mat-icon>
+                <span>Reserva</span>
             </button>
 
 
@@ -84,4 +78,3 @@
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
-

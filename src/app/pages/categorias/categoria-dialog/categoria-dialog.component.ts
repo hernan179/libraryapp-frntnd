@@ -71,13 +71,15 @@ operate(){
   if(this.categoriasForm.isInvalid()) return;
 
   const isEdit = this.$isEdit();
-    const id = this.$id();
-    const categorias: Categorias = this.categoriasForm.value();
+  const id = this.$id();
+  const categorias: Categorias = this.categoriasForm.value();
 
   const operation$ = isEdit ?  this.categoriasService.update(id,categorias) : this.categoriasService.save(categorias);
 
-operation$.subscribe(() => {
+  operation$.subscribe(() => {
       this.notificationService.notify(isEdit ? 'UPDATED' : 'CREATED');
+
+         this.categoriasDialogStore.reload();
       this.dialogRef.close(true);
     });
   }

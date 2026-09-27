@@ -8,12 +8,12 @@ import { CategoriaDialogComponent } from './categoria-dialog/categoria-dialog.co
 
 
 import { filter, switchMap, tap } from 'rxjs';
-import { CategoriasStore } from '../../store/categorias-score';
+import { CategoriasStore } from '../../store/categorias-store';
 
-import { RouterLink ,RouterOutlet,Router, NavigationEnd} from '@angular/router';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { NotificationService } from '../../shared/services/notification.service';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -34,7 +34,7 @@ export class CategoriasComponent {
 
 private readonly dialog = inject(MatDialog);
 
-  //protected categorias: Categorias[] = [];
+   private readonly snackBar = inject(MatSnackBar);
 
     protected displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'estado','acciones'];
 
@@ -51,6 +51,15 @@ private readonly dialog = inject(MatDialog);
 
     constructor() {
     this.setupTableEffect();
+
+        effect(() => {
+      const message = this.notificationService.$message();
+      if(message){
+        this.snackBar.open(message, 'INFO', { duration: 3000, horizontalPosition: 'right', verticalPosition: 'top' });
+        //limpio para que se muestre el mensaje, sino el signals se queda pegado y no reaccione si no cambia el valor
+        this.notificationService.clear();
+      }
+    });
   }
 
   private setupTableEffect() {
